@@ -1,0 +1,81 @@
+organizador-de-estudos/
+│
+├── index.html
+│
+├── pages/
+│   ├── inicio.html
+│   ├── login.html
+│   ├── cadastro.html
+│   ├── perfil.html
+│   ├── materias.html
+│   ├── tarefas.html
+│   ├── calendario.html
+│   ├── cronograma.html
+│   ├── provas.html
+│   ├── notas.html
+│   └── estatisticas.html
+│
+├── materias/
+│   ├── matematica/
+│   ├── portugues/
+│   ├── historia/
+│   ├── geografia/
+│   ├── biologia/
+│   ├── quimica/
+│   ├── fisica/
+│   └── ingles/
+│
+├── tarefas/
+│   ├── pendentes/
+│   ├── concluidas/
+│   ├── trabalhos/
+│   ├── exercicios/
+│   └── pesquisas/
+│
+├── planejamento/
+│   ├── horario-estudos/
+│   ├── calendario/
+│   ├── metas/
+│   └── lembretes/
+│
+├── provas/
+│   ├── proximas-provas/
+│   ├── provas-realizadas/
+│   └── resultados/
+│
+├── arquivos/
+│   ├── pdf/
+│   ├── imagens/
+│   ├── resumos/
+│   └── anotacoes/
+│
+├── assets/
+│   ├── images/
+│   │   ├── logo.png
+│   │   └── icones/
+│   │
+│   └── fonts/
+│
+├── css/
+│   ├── style.css
+│   ├── dashboard.css
+│   ├── calendario.css
+│   └── responsivo.css
+│
+├── js/
+│   ├── main.js
+│   ├── tarefas.js
+│   ├── materias.js
+│   ├── calendario.js
+│   ├── cronograma.js
+│   ├── lembretes.js
+│   └── estatisticas.js
+│
+├── database/
+│   ├── usuarios.sql
+│   ├── materias.sql
+│   ├── tarefas.sql
+│   ├── horarios.sql
+│   └── notas.sql
+│
+└── README.md
