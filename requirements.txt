@@ -1,0 +1,17 @@
+organizador-de-estudos/
+│
+├── app.py
+├── index.html
+├── requirements.txt
+├── README.md
+│
+├── pages/
+├── materias/
+├── tarefas/
+├── planejamento/
+├── provas/
+├── arquivos/
+├── assets/
+├── css/
+├── js/
+└── database/
