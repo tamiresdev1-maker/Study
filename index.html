@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Study: organize matérias, tarefas, provas e cronogramas de estudo.">
+  <title>Study — Organizador de estudos</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#inicio" aria-label="Study, página inicial">
+      <span>✦</span> study<span class="dot">.</span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
+    <nav class="nav" id="mainNav" aria-label="Navegação principal">
+      <a class="nav-link active" href="#inicio">Início</a>
+      <a class="nav-link" href="#materias">Matérias</a>
+      <a class="nav-link" href="#tarefas">Tarefas</a>
+      <a class="nav-link" href="#provas">Provas</a>
+      <a class="nav-link" href="#cronograma">Cronograma</a>
+    </nav>
+    <span class="today" id="todayLabel"></span>
+  </header>
+
+  <main class="container">
+    <section class="hero" id="inicio">
+      <div class="hero-copy">
+        <span class="eyebrow light">PLANEJE • ORGANIZE • CONQUISTE</span>
+        <h1>Seus estudos em dia.<br><span>Seu futuro em foco.</span></h1>
+        <p>Um espaço simples para organizar matérias, acompanhar atividades e planejar sua rotina de aprendizagem.</p>
+        <a class="button button-white" href="#tarefas">Começar a organizar <span>→</span></a>
+      </div>
+      <div class="hero-illustration" aria-hidden="true">
+        <div class="sun"></div>
+        <div class="paper paper-back"></div>
+        <div class="paper paper-front">
+          <span>STUDY PLAN</span>
+          <i>✓ &nbsp; Revisar conteúdo</i>
+          <i>✓ &nbsp; Resolver exercícios</i>
+          <i>○ &nbsp; Fazer uma pausa</i>
+        </div>
+        <div class="sparkle">✦</div>
+      </div>
+    </section>
+
+    <section class="intro-row">
+      <div>
+        <span class="eyebrow">SEU PAINEL</span>
+        <h2>Olá! Vamos organizar o dia? 👋</h2>
+        <p class="muted">Acompanhe seu progresso em um só lugar.</p>
+      </div>
+      <div class="date-pill">📅 <span id="fullDate"></span></div>
+    </section>
+
+    <section class="stats-grid" aria-label="Resumo">
+      <article class="stat-card">
+        <span class="stat-icon lavender">✓</span>
+        <div><small>Tarefas pendentes</small><strong id="pendingCount">0</strong><span>para concluir</span></div>
+      </article>
+      <article class="stat-card">
+        <span class="stat-icon peach">◷</span>
+        <div><small>Próximas provas</small><strong id="examCount">0</strong><span>nos próximos 7 dias</span></div>
+      </article>
+      <article class="stat-card">
+        <span class="stat-icon mint">▤</span>
+        <div><small>Matérias</small><strong id="subjectCount">0</strong><span>cadastradas</span></div>
+      </article>
+      <article class="stat-card">
+        <span class="stat-icon yellow">◎</span>
+        <div><small>Estudos planejados</small><strong id="studyCount">0</strong><span>sessões futuras</span></div>
+      </article>
+    </section>
+
+    <section class="two-columns">
+      <article class="panel" id="materias">
+        <div class="section-title">
+          <div><span class="eyebrow">ORGANIZE SEU CONTEÚDO</span><h2>Minhas matérias</h2></div>
+        </div>
+        <form id="subjectForm" class="form-row">
+          <label class="sr-only" for="subjectName">Nome da matéria</label>
+          <input id="subjectName" type="text" maxlength="40" placeholder="Ex.: Geografia" required>
+          <button class="button button-primary" type="submit">+ Adicionar</button>
+        </form>
+        <div id="subjectList" class="chips"></div>
+      </article>
+
+      <article class="panel" id="tarefas">
+        <div class="section-title">
+          <div><span class="eyebrow">NÃO DEIXE PARA DEPOIS</span><h2>Minhas tarefas</h2></div>
+        </div>
+        <form id="taskForm" class="stack-form">
+          <label for="taskTitle">O que precisa fazer?</label>
+          <input id="taskTitle" type="text" maxlength="90" placeholder="Ex.: Resolver exercícios da página 20" required>
+          <div class="form-row">
+            <div><label for="taskSubject">Matéria</label><select id="taskSubject" required><option value="">Selecione</option></select></div>
+            <div><label for="taskDate">Prazo</label><input id="taskDate" type="date" required></div>
+          </div>
+          <button class="button button-primary" type="submit">Adicionar tarefa</button>
+        </form>
+        <div class="filters" aria-label="Filtros de tarefas">
+          <button class="filter active" type="button" data-filter="all">Todas</button>
+          <button class="filter" type="button" data-filter="pending">Pendentes</button>
+          <button class="filter" type="button" data-filter="done">Concluídas</button>
+        </div>
+        <div id="taskList" class="item-list"><p class="empty">Nenhuma tarefa cadastrada ainda.</p></div>
+      </article>
+    </section>
+
+    <section class="two-columns lower-columns">
+      <article class="panel" id="provas">
+        <div class="section-title">
+          <div><span class="eyebrow">FIQUE PREPARADO</span><h2>Provas e avaliações</h2></div>
+        </div>
+        <form id="examForm" class="stack-form">
+          <label for="examTitle">Nome da prova ou avaliação</label>
+          <input id="examTitle" type="text" maxlength="80" placeholder="Ex.: Prova de funções" required>
+          <div class="form-row">
+            <div><label for="examSubject">Matéria</label><select id="examSubject" required><option value="">Selecione</option></select></div>
+            <div><label for="examDate">Data</label><input id="examDate" type="date" required></div>
+          </div>
+          <button class="button button-primary" type="submit">Cadastrar prova</button>
+        </form>
+        <div id="examList" class="item-list"><p class="empty">Nenhuma avaliação cadastrada.</p></div>
+      </article>
+
+      <article class="panel" id="cronograma">
+        <div class="section-title">
+          <div><span class="eyebrow">UM PLANO DE CADA VEZ</span><h2>Cronograma de estudos</h2></div>
+        </div>
+        <form id="scheduleForm" class="stack-form">
+          <label for="scheduleTitle">O que vai estudar?</label>
+          <input id="scheduleTitle" type="text" maxlength="80" placeholder="Ex.: Revisão de equações" required>
+          <div class="form-row">
+            <div><label for="scheduleSubject">Matéria</label><select id="scheduleSubject" required><option value="">Selecione</option></select></div>
+            <div><label for="scheduleDate">Dia</label><input id="scheduleDate" type="date" required></div>
+          </div>
+          <div class="form-row">
+            <div><label for="scheduleTime">Horário</label><input id="scheduleTime" type="time" required></div>
+            <div>
+              <label for="scheduleDuration">Duração</label>
+              <select id="scheduleDuration">
+                <option value="25">25 minutos</option>
+                <option value="45" selected>45 minutos</option>
+                <option value="60">1 hora</option>
+                <option value="90">1h30</option>
+                <option value="120">2 horas</option>
+              </select>
+            </div>
+          </div>
+          <button class="button button-primary" type="submit">Adicionar ao cronograma</button>
+        </form>
+        <div id="scheduleList" class="item-list"><p class="empty">Seu planejamento aparecerá aqui.</p></div>
+      </article>
+    </section>
+
+    <section class="progress-panel">
+      <div class="progress-symbol">✦</div>
+      <div class="progress-copy">
+        <span class="eyebrow light">PROGRESSO DA SEMANA</span>
+        <h2>Pequenos passos também são progresso.</h2>
+        <p id="progressMessage">Conclua tarefas para acompanhar sua evolução.</p>
+      </div>
+      <div class="progress-side">
+        <strong id="completedCount">0</strong>
+        <span>tarefas concluídas</span>
+        <div class="progress-track"><div id="progressBar" class="progress-fill"></div></div>
+      </div>
+    </section>
+
+    <section class="study-tip">
+      <div>
+        <span class="eyebrow">DICA STUDY</span>
+        <h2>Estudar com planejamento deixa tudo mais leve.</h2>
+        <p id="tipText">Organize suas atividades e faça pausas para descansar.</p>
+      </div>
+      <button class="button button-outline" id="tipButton" type="button">Nova dica ✨</button>
+    </section>
+  </main>
+
+  <footer>
+    <a class="brand" href="#inicio">✦ study<span class="dot">.</span></a>
+    <p>Seu espaço para aprender no seu ritmo.</p>
+    <small>© <span id="year"></span> Study — Organizador de estudos.</small>
+  </footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
