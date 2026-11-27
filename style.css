@@ -2,17 +2,13 @@
    STUDY — estilos do projeto
    ========================= */
 :root {
-  --ink: #29273e;
-  --muted: #858397;
-  --purple: #7667d8;
-  --purple-dark: #5e50bd;
-  --lavender: #f0edff;
-  --line: #eeedf4;
-  --bg: #f8f8fc;
-  --white: #fff;
-  --peach: #fff0e7;
-  --mint: #e5f5ed;
-  --yellow: #fff6dc;
+  --primary: #4C78B8;
+  --primary-dark: #315B94;
+  --background: #F3F7FC;
+  --surface: #FFFFFF;
+  --text: #302A3B;
+  --muted: #898394;
+  --accent: #DCE9F8;
 }
 
 * {
