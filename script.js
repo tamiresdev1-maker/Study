@@ -4,7 +4,7 @@
 const STORAGE_KEY = "study-organizador-v2";
 
 const initialData = {
-  subjects: ["Matemática", "Português", "Biologia", "História"],
+  subjects: ["Matemática", "Português", "Biologia", "História", "Geografia"],
   tasks: [],
   exams: [],
   schedule: []
